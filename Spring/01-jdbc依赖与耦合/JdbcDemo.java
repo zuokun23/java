@@ -11,7 +11,7 @@ import java.sql.*;
  *      第一步：使用反射来创建对象，避免使用new关键字
  *      第二步：通过读取配置文件，来获取要创建的对象全限定类名
  */
-public class JdbcDemo1 {
+public class JdbcDemo {
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         //1注册驱动
