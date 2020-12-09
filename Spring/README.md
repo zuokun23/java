@@ -43,20 +43,20 @@
   - [x] 第二种方式：使用工厂中的普通方法创建对象，使用某个类中的方法创建对象，并存入spring容器
     - 模拟一个工厂类，该类可能存在于jar包中的，以class而不是java方式呈现。
     - 我们无法通过修改源码的方式提供构造函数。
-    - <bean id="instanceFactory" class="com.itheima.factory.InstanceFactory"></bean>
-    - <bean id="accountService" factory-bean="instanceFactory" factory-method="getAccountService"></bean>
+    - bean id="instanceFactory" class="com.itheima.factory.InstanceFactory"></bean>
+    - bean id="accountService" factory-bean="instanceFactory" factory-method="getAccountService"></bean>
   - [x] 第三种方式：使用工厂中的静态方法创建对象，使用某个类中的静态方法创建对象，并存入spring容器
     - 模拟一个工厂类，该类可能存在于jar包中的，以class而不是java方式呈现。
     - 我们无法通过修改源码的方式提供构造函数。   
-    - <bean id="accountService" class="com.itheima.factory.StaticFactory" factory-method="getAccountService"></bean>
+    - bean id="accountService" class="com.itheima.factory.StaticFactory" factory-method="getAccountService"></bean>
     
 - ## 2.bean对象的作用范围
   - bean标签的scope属性：
-    - [x] 作用：用于指定bean的作用范围
-    - [x] 取值：
+    -  作用：用于指定bean的作用范围
+    -  取值：
       - [x] singleton：单例的（默认）
       - [x] prototype：多例的
-        - <bean id="accountService" class="com.itheima.service.impl.AccountServiceImpl" scope="prototype"></bean>
+        - bean id="accountService" class="com.itheima.service.impl.AccountServiceImpl" scope="prototype"></bean>
       - [x] request：作用于web应用的请求范围
       - [x] session：作用于web应用的会话范围
       - [x] global-session：作用于集群环境的会话范围（全局会话范围），当不上集群环境时，它就是session
