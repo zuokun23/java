@@ -39,12 +39,26 @@
   - [x] 第一种方式：使用默认的构造函数：在spring的配置文件中使用bean标签，使用id和class属性，且没有其他属性和标签时。此时类中没有默认构造函数，则对象无法创建。
     - java中如果在一个类中没有写明任何构造函数的,那么会存在一个无参的构造函数。
     - 但如果写明了一个有参的构造函数,那么无参的构造函数就不复存在了。
+    - <bean id="accountService" class="com.itheima.service.impl.AccountServiceImpl"></bean>
   - [x] 第二种方式：使用工厂中的普通方法创建对象，使用某个类中的方法创建对象，并存入spring容器
     - 模拟一个工厂类，该类可能存在于jar包中的，以class而不是java方式呈现。
     - 我们无法通过修改源码的方式提供构造函数。
+    - <bean id="instanceFactory" class="com.itheima.factory.InstanceFactory"></bean>
+    - <bean id="accountService" factory-bean="instanceFactory" factory-method="getAccountService"></bean>
   - [x] 第三种方式：使用工厂中的静态方法创建对象，使用某个类中的静态方法创建对象，并存入spring容器
     - 模拟一个工厂类，该类可能存在于jar包中的，以class而不是java方式呈现。
     - 我们无法通过修改源码的方式提供构造函数。   
+    - <bean id="accountService" class="com.itheima.factory.StaticFactory" factory-method="getAccountService"></bean>
+    
 - ## 2.bean对象的作用范围
+  - bean标签的scope属性：
+    - [x] 作用：用于指定bean的作用范围
+    - [x] 取值：
+      - [x] singleton：单例的（默认）
+      - [x] prototype：多例的
+        - <bean id="accountService" class="com.itheima.service.impl.AccountServiceImpl" scope="prototype"></bean>
+      - [x] request：作用于web应用的请求范围
+      - [x] session：作用于web应用的会话范围
+      - [x] global-session：作用于集群环境的会话范围（全局会话范围），当不上集群环境时，它就是session
   
 - ## 3.bean对象的生命周期
