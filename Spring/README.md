@@ -39,16 +39,16 @@
   - [x] 第一种方式：使用默认的构造函数：在spring的配置文件中使用bean标签，使用id和class属性，且没有其他属性和标签时。此时类中没有默认构造函数，则对象无法创建。
     - java中如果在一个类中没有写明任何构造函数的,那么会存在一个无参的构造函数。
     - 但如果写明了一个有参的构造函数,那么无参的构造函数就不复存在了。
-    - <bean id="accountService" class="com.itheima.service.impl.AccountServiceImpl"></bean>
+    - bean id="accountService" class="com.itheima.service.impl.AccountServiceImpl">/bean>
   - [x] 第二种方式：使用工厂中的普通方法创建对象，使用某个类中的方法创建对象，并存入spring容器
     - 模拟一个工厂类，该类可能存在于jar包中的，以class而不是java方式呈现。
     - 我们无法通过修改源码的方式提供构造函数。
-    - bean id="instanceFactory" class="com.itheima.factory.InstanceFactory"></bean>
-    - bean id="accountService" factory-bean="instanceFactory" factory-method="getAccountService"></bean>
+    - bean id="instanceFactory" class="com.itheima.factory.InstanceFactory">/bean>
+    - bean id="accountService" factory-bean="instanceFactory" factory-method="getAccountService">/bean>
   - [x] 第三种方式：使用工厂中的静态方法创建对象，使用某个类中的静态方法创建对象，并存入spring容器
     - 模拟一个工厂类，该类可能存在于jar包中的，以class而不是java方式呈现。
     - 我们无法通过修改源码的方式提供构造函数。   
-    - bean id="accountService" class="com.itheima.factory.StaticFactory" factory-method="getAccountService"></bean>
+    - bean id="accountService" class="com.itheima.factory.StaticFactory" factory-method="getAccountService">/bean>
     
 - ## 2.bean对象的作用范围
   - bean标签的scope属性：
@@ -62,3 +62,13 @@
       - [x] global-session：作用于集群环境的会话范围（全局会话范围），当不上集群环境时，它就是session
   
 - ## 3.bean对象的生命周期
+  - 单例对象：当容器创建时对象出生
+    - 活着：只要容器还在，对象一直活着
+    - 死亡：容器销毁，对象消亡
+    - 总结：单例对象的生命周期和容器相同
+    - 未使用ac.close()关闭，不会调用destroy方法，因为main结束销毁线程占有一切内存，容器也被销毁，但此时还没有来得及调用销毁方法，就消失了（close方法在子类中，不再父类中）
+    - bean id="accountService" class="com.itheima.service.impl.AccountServiceImpl" scope="singleton"init-method="init" destroy-method="destroy">/bean>
+  - 多例对象： 
+    - 出生：当我们使用时创建
+    - 活着：对象只要在使用过程中就一直活着
+    - 死亡：当对象长时间不用，且没有别的对象引用时，由java垃圾回收器回收。容器不知道我们使用多久。
