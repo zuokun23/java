@@ -16,6 +16,7 @@
       - 配置的内容：唯一标识=全限定类名（key=value）
     - 第二个：通过读取配置文件中内容，反射创建对象
     - 我的配置文件可以是xml也可以是properties(此处用properties因为更简单)
+# 02 改进：加入单例模式
 # 03 
 - 获取spring的ioc核心容器，并根据id获取对象
   - ApplicationContext的三个常用实现类：
