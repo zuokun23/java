@@ -118,6 +118,3 @@
 ## - 3、改造基于注解的ioc案例，使用纯注解的方式实现
     - spring的一些新注解使用
 ## - 4、spring和junit的整合
-
-# 06 Spring基于注解的IOC以及Ioc的案例技术
-# 06 Spring基于注解的IOC以及Ioc的案例
