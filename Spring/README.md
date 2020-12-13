@@ -112,7 +112,39 @@
     - [x] 使用注解提供（明天内容）
 
 # 06 Spring基于注解的IOC以及Ioc的案例
-  - ## 1、spring中ioc的常见注解
+    ```
+    曾经xml的配置：
+    <bean id="accountService" class="com.itheima.service.impl.AccountServiceImpl"
+    scope="" init-method="" destory-method="">
+    <property name=" value=""|ref=""></property>>
+    </bean>
+    ```
+- ## 1、spring中ioc的常见注解
+   
+  - 用于创建对象的注解
+    - 他们的作用和在xml配置文件中编写一个bean标签实现的功能一样
+    - @Component：
+      - 作用：用于把当前类对象存入spring容器中
+      - 属性：value--用于指定bean的id。当我们不写，它默认当前类名，且首字母小写。
+    - @Controller：一般用在表现层
+    - @Service：一般用在业务层
+    - @Repository：一般用在持久层
+    - 以上三个注解的作用和属性与Component是一模一样的
+    - 他们三个是spring框架为我们提供明确的三层使用的注解，使我们对三层对象更加清晰。
+  - 用于注入数据的注解
+    - 他们的作用就和在xml配置文件中的bean标签中写一个property标签作用一样
+    - @Autowired:        
+    - 作用：自动按照类型注入。只要容器中有唯一的一个bean对象类型和要注入的变量类型匹配，就可以注入成功。
+      如果ioc容器中没有任何bean类型和要注入的变量类型匹配，则报
+      如果ioc容器中有多个类型匹配时，
+    - 出现位置：可以是变量上，也可以是方法上
+    - 细节：
+      在使用注解注入时，set方法不是必须的。
+  - 用于改变作用范围的注解
+    - 他们的作用就和bean标签中使用scope属性实现的功能是一样的
+  - 和生命周期相关
+    - 他们的作用和在bean标签中使用init-method和destroy-method作用是一样的
+ 
   - ## 2、案例中使用xml方式和注解方式实现单表的CRUD操作
     - 持久层技术选择：dbutils
   - ## 3、改造基于注解的ioc案例，使用纯注解的方式实现
