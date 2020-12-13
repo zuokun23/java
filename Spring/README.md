@@ -138,7 +138,7 @@
     - 作用：自动按照类型注入。
       - 只要容器中有唯一的一个bean对象类型和要注入的变量类型匹配，就可以注入成功。
       - 如果ioc容器中没有任何bean类型和要注入的变量类型匹配，则报错
-      - 如果ioc容器中有多个类型匹配时，按照变量名和value值
+      - 如果ioc容器中有多个类型匹配时，按照变量名和value值匹配
       
     ![autowired](https://github.com/zuokun23/java/blob/main/Spring/images/autowired.png)
     - 出现位置：可以是变量上，也可以是方法上
